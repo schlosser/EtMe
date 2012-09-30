@@ -1,4 +1,5 @@
 # imports
+import init
 import getdata
 import getproducts
 from flask import Flask, redirect, session, request, url_for, render_template, flash
@@ -10,11 +11,6 @@ base_url = "http://localhost:5000"
 @app.route("/")
 def login_page():
     return render_template("login.html")
-
-def makeClient():
-    return Foursquare(client_id = "3GZG0BE3SQSWRKGCXXSEJD4FM2TWGXTQOFQUWOKCQ3ZILXEP",
-            client_secret = "EXTDHANAPBAR3PDAGJU2DLLZFJPPH1KZYESMY00LXZCVTEBW",
-            redirect_uri = base_url + "/auth2")
 
 @app.route("/auth")
 def foursquare_connect():

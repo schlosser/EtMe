@@ -1,5 +1,5 @@
 # imports
-from etme import makeClient
+import init
 from foursquare import Foursquare
 
 def getData():
