@@ -11,7 +11,7 @@ def getData():
     client.set_access_token(access_token);
     
     # Listing check-ins
-    checkIns = client.users.checkins()['checkins'];
+    checkIns = client.users.checkins(params={'limit': 20})['checkins'];
     # Look for Tags
     venues = [];
     for i in range(checkIns['count']):
