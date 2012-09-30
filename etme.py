@@ -1,6 +1,3 @@
-# TODO:
-# Include "Thesaurus provided by" text
-
 # imports
 from init import makeClient
 import getdata
@@ -29,7 +26,7 @@ def main_page():
 
     Populate data with synonyms
     for word in data:
-       data.extend(getSynonyms(word))
+    data.extend(synonyms.getSynonyms(word))
 
     products = getproducts.getProducts(data)
     return render_template("main_page.html")
