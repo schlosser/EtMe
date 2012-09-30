@@ -27,6 +27,31 @@ def main_page():
     session['access_token'] = access_token
     return render_template("main_page.html")
 
+@app.route("/list")
+def list(): 
+    client = makeClient();
+    # Fetch accesscode from cookies
+    access_token = session['access_token'];
+    client.set_access_token(access_token);
+    
+    # Listing check-ins
+    checkIns = client.users.checkins()['checkins'];#, afterTimestamp=time.time()-604800000);
+    # Look for Tags
+    venues = [];
+    for i in range(checkIns['count']):
+        checkIn = checkIns['items'][i];
+        if checkIn['type']=='valueless': continue;
+        venues = venues + [checkIn['venue']['id']];
+
+    tagSet = [];
+    for i in venues:
+        venue = client.venues(i)['venue'];
+        tagSet += venue['tags']
+
+    print tagSet
+    return 'OK';
+
+
 # @app.route("/test_session")
 # def test():
 #     return session['access_token'];
