@@ -27,9 +27,9 @@ def main_page():
     session['access_token'] = access_token
     data = getdata.getData()
 
-    # Populate data with synonyms
+    Populate data with synonyms
     for word in data:
-        data.extend(getSynonyms(word))
+       data.extend(getSynonyms(word))
 
     products = getproducts.getProducts(data)
     return render_template("main_page.html")
