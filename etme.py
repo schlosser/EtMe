@@ -29,7 +29,6 @@ def main_page():
     products = getproducts.getProducts(getdata.getData())
     return render_template("main_page.html")
 
-<<<<<<< HEAD
 @app.route("/list")
 def list(): 
     client = makeClient();
@@ -59,8 +58,6 @@ def list():
 # def test():
 #     return session['access_token'];
 
-=======
->>>>>>> 27974178ed691cbcb16326824129a0cd68aaa4e2
 app.debug = True
 app.secret_key = "/x85/xfe/x98j/xc8FQb-/x88/xaf/x87/xda/xed/xba/n/x1dk/xbb//0b/xb06/xd2/x87"
 if __name__ == "__main__":
