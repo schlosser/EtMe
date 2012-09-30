@@ -24,4 +24,4 @@ def getData():
         tagSet += venue['tags']
 
     print tagSet
-    return data
+    return tagSet
