@@ -1,5 +1,6 @@
 # imports
 import getdata
+import getproducts
 from flask import Flask, redirect, session, request, url_for, render_template, flash
 from foursquare import Foursquare
 
@@ -25,8 +26,10 @@ def main_page():
     code = request.args.getlist("code")
     access_token = client.oauth.get_token(str(code[0]))
     session['access_token'] = access_token
+    products = getproducts.getProducts(getdata.getData())
     return render_template("main_page.html")
 
+<<<<<<< HEAD
 @app.route("/list")
 def list(): 
     client = makeClient();
@@ -56,6 +59,8 @@ def list():
 # def test():
 #     return session['access_token'];
 
+=======
+>>>>>>> 27974178ed691cbcb16326824129a0cd68aaa4e2
 app.debug = True
 app.secret_key = "/x85/xfe/x98j/xc8FQb-/x88/xaf/x87/xda/xed/xba/n/x1dk/xbb//0b/xb06/xd2/x87"
 if __name__ == "__main__":
