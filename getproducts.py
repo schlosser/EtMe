@@ -13,6 +13,7 @@ def getProducts(data):
 def importData(data):
     EtsyListingCounter = Counter()
     for keyword in data:
+        print("We're on the keyword", keyword)
         keywordString = buildURL(keyword)
         textListingLibrary = json.loads(requests.get(keywordString).text)
         for textListing in textListingLibrary['results']:
