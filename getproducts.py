@@ -18,10 +18,10 @@ def importData(data):
         keywordString = buildURL(keyword)
         textListingLibrary = json.loads(requests.get(keywordString).text)
         for textListing in textListingLibrary['results']:
-            print"inside"
-            y = convert(textListing)
-            print y
-            EtsyListingCounter.update({y})
+#            print"inside"
+#            y = convert(textListing)
+#            print y
+            EtsyListingCounter.update({convert(textListing)})
             # print mEtsyListing
 ##            if mEtsyListing in EtsyListingDictionary:
 ##                index = EtsyListingDictionary.index(mEtsyListing)
@@ -29,7 +29,7 @@ def importData(data):
 ##            else:
 ##                EtsyListingList.append(mEtsyListing)
 
-    return EtsyListingList
+    return EtsyListingCounter
 
 def convert(textListing):
     listing_id = textListing['listing_id']
@@ -59,18 +59,18 @@ def buildURL(keywordString):
 
 def counterToList(counter):
     myList = []
-    myList.add(counter.popitem())
+    myList += [counter.popitem()]
     for key in counter:
-        placed = 0; val = counter[key]; imax = myList.size(); imin = 0
+        placed = 0; val = counter[key]; imax = len(myList); imin = 0
         while (imax > imin and placed == 0):
             imid = (imax + imin)/2
             if(myList[imid][1] < val):
-                imin = mid + 1
+                imin = imid + 1
             elif(myList[imid][1] > val):
                 imax = imid
             else:
                 placed = 1
-        myList.add(tuple(key, val), (imax+imin)/2)
+        myList.insert((imax+imin)/2, (key, val))
     return myList        
             
                 

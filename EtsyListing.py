@@ -13,3 +13,6 @@ class EtsyListing:
             return True
         else:
             return False
+
+    def __hash__(self):
+        return hash(self.LISTING_ID)
