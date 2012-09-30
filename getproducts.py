@@ -36,7 +36,7 @@ def findImageURL(listing_id):
     return 'http://cdn2.holytaco.com/wp-content/uploads/images/2009/12/funny-pictures-bird-cat-cage.jpg'
 
 def buildURL(keywordString):
-    baseString = 'http://openapi.etsy.com/v2/listings/active?limit=20&offset=0&api_key=o9hb5cpjkolw3fx44r46q6lh'
+    baseString = 'http://openapi.etsy.com/v2/listings/active?limit=5&offset=0&api_key=o9hb5cpjkolw3fx44r46q6lh'
     returnFields = '&fields=listing_id,title,description,url'
     keywords = '&keywords=' + keywordString
     return baseString + returnFields + keywords
