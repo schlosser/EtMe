@@ -8,5 +8,5 @@ def getSynonyms(word):
     newSynonyms = []
     for word in synonyms:
         words = string.split(word, "|")
-        newSynonyms.append(words[2])
+        newSynonyms.append(words[len(words) - 1])
     return newSynonyms

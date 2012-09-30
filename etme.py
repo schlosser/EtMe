@@ -17,11 +17,15 @@ def foursquare_connect():
     return redirect(makeClient().oauth.auth_url());
 
 @app.route("/auth2")
-def main_page():
+def redirect_page():
     client = makeClient()
     code = request.args.getlist("code")
     access_token = client.oauth.get_token(str(code[0]))
     session['access_token'] = access_token
+    return redirect("/home")
+
+@app.route("/home")
+def home_page():
     data = getdata.getData()
 
     # Populate data with synonyms

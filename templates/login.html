@@ -11,15 +11,23 @@
             $(document).ready(function ()
             {
                 $('#wrapper').css({ display: 'none' }).fadeIn(1200);
+                $('#topbar').css({ display: 'none' }).fadeIn(600);
             });
         </script>
     </head>
-    <body>
-        <div id="wrapper">
-            <span id="logintext">Log in with</span>
-            <div id="button">
-                <a href="http://localhost:5000/auth"><img src="../static/images/fslogo.png" /></a>
+    <center>
+        <body>
+            <div id="topbar">
+                <div id="logo">
+                    <img src="../static/images/etme.png" />
+                </div>
             </div>
-        </div>
-    </body>
+            <div id="wrapper">
+                <span id="logintext">Log in with</span>
+                <div id="button">
+                    <a href="http://localhost:5000/auth"><img src="../static/images/fslogo.png" /></a>
+                </div>
+            </div>
+        </body>
+    </center>
 </html>
