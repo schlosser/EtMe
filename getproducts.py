@@ -4,7 +4,11 @@ from collections import Counter
 from EtsyListing import EtsyListing
 
 def getProducts(data):
-    return counterToList(importData(data))
+    List = counterToList(importData(data))
+    List2 = []
+    for i in List:
+        List2.append(i[0])        
+    return List2
 
 def importData(data):
     EtsyListingCounter = Counter()
