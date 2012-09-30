@@ -1,0 +1,6 @@
+include "Thesaurus provided by" text on web page
+
+Install on server:
+requests
+flask
+foursquare
