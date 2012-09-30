@@ -14,8 +14,7 @@ def getData():
     checkIns = client.users.checkins(params={'limit': 5})['checkins'];
     # Look for Tags
     venues = [];
-    for i in range(checkIns['count']):
-        checkIn = checkIns['items'][i];
+    for checkIn in checkIns['items']:
         if checkIn['type']=='valueless': continue;
         venues = venues + [checkIn['venue']['id']];
 
