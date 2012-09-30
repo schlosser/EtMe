@@ -1,12 +1,11 @@
 # imports
-import init
+from init import makeClient
 import getdata
 import getproducts
 from flask import Flask, redirect, session, request, url_for, render_template, flash
 from foursquare import Foursquare
 
 app = Flask(__name__)
-base_url = "http://localhost:5000"
 
 @app.route("/")
 def login_page():

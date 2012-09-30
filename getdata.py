@@ -1,6 +1,7 @@
 # imports
-import init
+from init import makeClient
 from foursquare import Foursquare
+from flask import session
 
 def getData():
     data = []
