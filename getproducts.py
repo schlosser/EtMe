@@ -4,13 +4,7 @@ from collections import Counter
 from EtsyListing import EtsyListing
 
 def getProducts(data):
-    EtsyListingCounter = importData(data)
-    print("Almost there!")
-    EtsyListingList = counterToList(EtsyListingCounter)
-
-    print EtsyListingList
-    
-    return EtsyListingList
+    return counterToList(importData(data))
 
 def importData(data):
     EtsyListingCounter = Counter()
@@ -18,17 +12,7 @@ def importData(data):
         keywordString = buildURL(keyword)
         textListingLibrary = json.loads(requests.get(keywordString).text)
         for textListing in textListingLibrary['results']:
-#            print"inside"
-#            y = convert(textListing)
-#            print y
             EtsyListingCounter.update({convert(textListing)})
-            # print mEtsyListing
-##            if mEtsyListing in EtsyListingDictionary:
-##                index = EtsyListingDictionary.index(mEtsyListing)
-##                EtsyListingDictionary[index].FREQUENCY += 1
-##            else:
-##                EtsyListingList.append(mEtsyListing)
-
     return EtsyListingCounter
 
 def convert(textListing):
@@ -52,7 +36,7 @@ def findImageURL(listing_id):
     return 'http://cdn2.holytaco.com/wp-content/uploads/images/2009/12/funny-pictures-bird-cat-cage.jpg'
 
 def buildURL(keywordString):
-    baseString = 'http://openapi.etsy.com/v2/listings/active?api_key=o9hb5cpjkolw3fx44r46q6lh'
+    baseString = 'http://openapi.etsy.com/v2/listings/active?limit=20&offset=0&api_key=o9hb5cpjkolw3fx44r46q6lh'
     returnFields = '&fields=listing_id,title,description,url'
     keywords = '&keywords=' + keywordString
     return baseString + returnFields + keywords
@@ -72,22 +56,3 @@ def counterToList(counter):
                 placed = 1
         myList.insert((imax+imin)/2, (key, val))
     return myList        
-            
-                
-
-
-
-# works r = requests.get('http://openapi.etsy.com/v2/users/amos?api_key=o9hb5cpjkolw3fx44r46q6lh')
-# works r = requests.get('http://openapi.etsy.com/v2/categories/Art?api_key=o9hb5cpjkolw3fx44r46q6lh')
-##r = requests.get('http://openapi.etsy.com/v2/taxonomy/categories?api_key=o9hb5cpjkolw3fx44r46q6lh')
-##j = json.loads(r.text)
-##
-##results = j['results']
-
-##print json.dumps(results, indent=4)
-
-##for res in results:
-##    keywords = res['meta_keywords'].split(', ')
-##    for word in keywords:
-##        print word
-##    print ''
