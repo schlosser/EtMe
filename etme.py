@@ -1,7 +1,11 @@
+# TODO:
+# Include "Thesaurus provided by" text
+
 # imports
 from init import makeClient
 import getdata
 import getproducts
+import synonyms
 from flask import Flask, redirect, session, request, url_for, render_template, flash
 from foursquare import Foursquare
 
@@ -21,7 +25,13 @@ def main_page():
     code = request.args.getlist("code")
     access_token = client.oauth.get_token(str(code[0]))
     session['access_token'] = access_token
-    products = getproducts.getProducts(getdata.getData())
+    data = getdata.getData()
+
+    # Populate data with synonyms
+    for word in data:
+        data.extend(getSynonyms(word))
+
+    products = getproducts.getProducts(data)
     return render_template("main_page.html")
 
 app.debug = True
