@@ -11,10 +11,12 @@ def getData():
     client.set_access_token(access_token);
     
     # Listing check-ins
-    checkIns = client.users.checkins(params={'limit': 5})['checkins'];
+    checkIns = client.users.checkins(params={'limit': 20})['checkins'];
     # Look for Tags
     venues = [];
-    for checkIn in checkIns['items']:
+    print len(checkIns['items']);
+    for i in range(len(checkIns['items'])):
+        checkIn=checkIns['items'][i];
         if checkIn['type']=='valueless': continue;
         venues = venues + [checkIn['venue']['id']];
 
