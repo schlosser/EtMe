@@ -22,6 +22,11 @@ def buildURL():
     keywords = '&keywords=men,slim'
     return tagRequest+returnFields+keywords
 
+
+
+
+
+
 tagRequest = requests.get(buildURL())
 myLib = json.loads(tagRequest.text)
 results = myLib["results"]
@@ -30,4 +35,16 @@ results = myLib["results"]
 print json.dumps(myLib, indent = 4)
 
 print tagRequest.status_code, " " # str(tagRequest.text)
+
+
+
+
+
+
+
+
+from collections import namedtuple
+
+EtsyListing = namedtuple('EtsyListing', ['title', 'description', 'listing_url',
+                                         'image_url', 'featured_rank', 'num_favorers'])
 
