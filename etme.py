@@ -29,10 +29,10 @@ def home_page():
     data = getdata.getData()
 
     # Populate data with synonyms
-    moredata = []
-    for word in data:
-        moredata.extend(synonyms.getSynonyms(word))
-    data.extend(moredata)
+#    moredata = []
+#    for word in data:
+#        moredata.extend(synonyms.getSynonyms(word))
+#    data.extend(moredata)
 
     products = getproducts.getProducts(data)
     return render_template("main_page.html")
