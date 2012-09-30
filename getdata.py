@@ -11,7 +11,7 @@ def getData():
     client.set_access_token(access_token);
     
     # Listing check-ins
-    checkIns = client.users.checkins(params={'limit': 20})['checkins'];
+    checkIns = client.users.checkins(params={'limit': 5})['checkins'];
     # Look for Tags
     venues = [];
     for i in range(checkIns['count']):
@@ -22,9 +22,13 @@ def getData():
     tagSet = [];
     for i in venues:
         venue = client.venues(i)['venue'];
-        tagSet += venue['tags']
-        for j in venue['categories']:
-            tagSet+= [j['name']]
+	if len(venue['tags'])>=5 :
+            tagSet += venue['tags'][0:4];
+        else:
+            tagSet += venue['tags'];
+            for j in venue['categories']:
+                tagSet+= [j['name']];
+
 
     print tagSet
     return tagSet
