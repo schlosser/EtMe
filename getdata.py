@@ -23,6 +23,8 @@ def getData():
     for i in venues:
         venue = client.venues(i)['venue'];
         tagSet += venue['tags']
+        for j in venue['categories']:
+            tagSet+= [j['name']]
 
     print tagSet
     return tagSet
