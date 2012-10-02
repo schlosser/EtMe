@@ -4,7 +4,6 @@ from foursquare import Foursquare
 from flask import session
 
 def getData():
-    data = []
     client = makeClient();
     # Fetch accesscode from cookies
     access_token = session['access_token'];
@@ -31,5 +30,4 @@ def getData():
                 tagSet+= [j['name']];
 
 
-    print tagSet
     return tagSet
